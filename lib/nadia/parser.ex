@@ -39,7 +39,7 @@ defmodule Nadia.Parser do
   defp parse(:updates, l) when is_list(l), do: Enum.map(l, &(parse(Update, &1)))
   defp parse(:chat_members, l) when is_list(l), do: Enum.map(l, &(parse(ChatMember, &1)))
   defp parse(type, val), do: struct(type, Enum.map(val, &(parse(&1))))
-  defp parse(:photo, val), do: parse(ChatPhoto, val)
+  defp parse({:photo, val}), do: parse(ChatPhoto, val)
   defp parse({:chat, val}), do: {:chat, parse(Chat, val)}
   defp parse({:audio, val}), do: {:audio, parse(Audio, val)}
   defp parse({:video, val}), do: {:video, parse(Video, val)}
