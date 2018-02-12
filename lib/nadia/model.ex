@@ -154,6 +154,11 @@ defmodule Nadia.Model do
     @type t :: %ChatMember{user: User.t, status: binary}
   end
 
+  defmodule ChatPhoto do
+    defstruct small_file_id: nil, big_file_id: nil
+    @type t :: %ChatPhoto{small_file_id: binary, big_file_id: binary}
+  end
+
   defmodule Error do
     defexception reason: nil
     @type t :: %Error{reason: any}
